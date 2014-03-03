@@ -101,6 +101,10 @@ if __name__ == "__main__":
         LastPivotSelector(),
         MiddlePivotSelector(),
         RandomPivotSelector(),
+        RandomPivotSelector(),
+        RandomPivotSelector(),
+        RandomPivotSelector(),
+        RandomPivotSelector(),
         MedianPivotSelector()
     ];
     for pivot_selector in pivot_selectors:
