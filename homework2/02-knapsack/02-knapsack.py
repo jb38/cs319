@@ -3,13 +3,14 @@
 import copy; #for deep copies of lists
 
 class KnapsackItem():
-    def __init__(self, weight, price):
+    def __init__(self, weight, price, part = 1.0):
         self.weight = weight;
         self.price = price;
         self.value = self.price / float(self.weight);
+        self.part = part;
     
     def __repr__(self):
-        return "%i\t%i\t%03.2f" % (self.weight, self.price, self.value);
+        return "%i\t%i\t%03.2f\t%03.2f" % (self.weight, self.price, self.value, self.part);
     
 class Knapsack():
     def __init__(self, capacity):
@@ -24,38 +25,55 @@ class Knapsack():
             return False;
     
     def can_add(self, item):
-        return self.capacity >= self.weight() + item.weight;
+        return self.capacity >= self.weight() + (item.weight * item.part);
     
     def weight(self):
-        sum_of_weights = 0;
+        sum_of_weights = 0.0;
         for item in self.items:
-            sum_of_weights += item.weight;
+            sum_of_weights += item.weight * item.part;
         return sum_of_weights;
     
     def price(self):
-        sum_of_prices = 0;
+        sum_of_prices = 0.0;
         for item in self.items:
-            sum_of_prices += item.price;
+            sum_of_prices += item.price * item.part;
         return sum_of_prices;
+    
+    def item_count(self):
+        sum_of_items = 0.0;
+        for item in self.items:
+            sum_of_items += item.part;
+        return sum_of_items;
         
     def empty(self):
         self.items = [];
 
     def greedy_fill(self, items):
-        items = sorted(copy.deepcopy(items), key = lambda item: item.value, reverse = True);
-        print "\tWeight\tPrice\tValue"
+        items = sorted(copy.deepcopy(items), key = lambda item: item.price, reverse = True);
+        print "\tWeight\tPrice\tValue\tPart"
         for item in items:
             if self.add_item(item):
                 print "Item:\t" + str(item);
 
     def greedy_fractional_fill(self, items):
+        items = sorted(copy.deepcopy(items), key = lambda item: item.value, reverse = True);
+        print "\tWeight\tPrice\tValue\tPart"
+        for item in items:
+            if self.add_item(item):
+                print "Item:\t" + str(item);
+            else:
+                item_copy = copy.deepcopy(item);
+                item_copy.part = (self.capacity - self.weight()) / item_copy.weight;
+                if self.add_item(item_copy):
+                    print "Item:\t" + str(item_copy);
+                break;
         return;
         
     def report_contents(self):
         print "Capacity: " + str(self.capacity);
         print "Weight:   " + str(self.weight());
         print "Price:    " + str(self.price());
-        print "Items:    " + str(len(self.items));
+        print "Items:    " + str(self.item_count());
         print;
 
 if __name__ == '__main__':
@@ -71,7 +89,7 @@ if __name__ == '__main__':
     ];
     
     print "Available Items:";
-    print "Weight\tPrice\tValue";
+    print "Weight\tPrice\tValue\tPart";
     for knapsack_item in knapsack_items:
       print knapsack_item;
     print;
