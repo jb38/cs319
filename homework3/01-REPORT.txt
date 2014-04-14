@@ -1,0 +1,34 @@
+Jim Blaney > Hood College > CS 319 > Spring 2014 > Homework 3
+
+# Problem 1
+
+## Language
+
+I chose a Python implementation to solve this problem.
+
+## Implemented Data Structures
+
+### Graph (class)
+
+```Python
+class Graph:
+    def __init__(self, num_vertices = 0):
+        self.p = [[0 for x in xrange(num_vertices)] for x in xrange(num_vertices)];
+
+    def is_edge(self, i, j):
+        return self.p[i][j] != 0;
+
+    def set_edge(self, i, j, value):
+        self.p[i][j] = value;
+
+    def num_nodes(self):
+        return len(self.p[0]);
+
+    def __str__(self):
+        return str(self.p);
+```
+
+### What worked
+
+
+### What didn't work
