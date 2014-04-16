@@ -14,3 +14,8 @@ _Due 3/6/2014_
 
 TODO
 
+## Homework 3
+
+_Due 4/17/2014_
+
+TODO
