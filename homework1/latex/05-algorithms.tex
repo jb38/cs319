@@ -1,0 +1,72 @@
+\begin{algorithm}[H]
+\caption{Computes the number of leaves in a binary tree}
+\textbf{Inputs:} $T$, a binary tree \\
+\textbf{Outputs:} The number of leaf nodes in the initially-provided binary tree \\
+\textbf{Complexity:} $O(N)$. Each node is computed against one time
+\hline
+\begin{algorithmic}[1]
+  \Function{CountLeaves}{$T$}
+    \If {$T = null $}
+      \State \Return {$0$}
+    \ElsIf {$T.left = null \And T.right = null$}
+      \State \Return{$1$}
+    \Else
+      \State \Return \Call{CountLeaves}{$T.left$} $+$ \Call{CountLeaves}{$T.right$} 
+    \EndIf
+  \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Computes the height of a node in a binary tree}
+\textbf{Inputs:} $T$, a binary tree \\
+\textbf{Outputs:} The height of the initally-provided binary tree \\
+\textbf{Complexity:} $O(N)$. Each node is computed against one time
+\hline
+\begin{algorithmic}[1]
+  \Function{NodeHeight}{$T$}
+    \If {$T = null$}
+      \State \Return {$0$}
+    \EndIf
+    \State $leftHeight :=$ \Call{NodeHeight}{$T.left$}
+    \State $rightHeight :=$ \Call{NodeHeight}{$T.right$}
+    \State \Return $1\ +$ \Call{Max}{$leftHeight$, $rightHeight$}
+  \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Computes the maximum depth of a binary tree}
+\textbf{Inputs:} $T$, a binary tree \\
+\textbf{Outputs:} The maximum depth of the initally-provided binary tree from the root node to the farthest leaf \\
+\textbf{Complexity:} $O(log(N))$. Each node is computed against its parent one time, reducing the number of computations (compared to $N$) by half for each iteration
+\hline
+\begin{algorithmic}[1]
+  \Function{NodeDepth}{$T$}
+    \If {$T.parent = null$}
+      \State \Return {$0$}
+    \Else
+      \State \Return $1\ +$ \Call{NodeDepth}{$T.Parent$}
+    \EndIf
+  \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Indicates whether a binary tree is full (or not)}
+\textbf{Inputs:} $T$, a binary tree \\
+\textbf{Outputs:} The state of fullnes of the initially-provided binary tree \\
+\textbf{Complexity:} $O(N)$. Each node is computed against one time
+\hline
+\begin{algorithmic}[1]
+  \Function{IsFull}{$T$}
+    \If {$T.left \not= null \And T.right \not= null$} %\Comment{The node has both children}
+      \State \Return{\Call{IsFull}{$T.left$} $\And$ \Call{IsFull}{$T.right$}}
+    \ElsIf {$T.left = null \And T.right = null$} %\Comment{The node is a leaf}
+      \State \Return{$true$}
+    \Else %\Comment{The node is not full}
+      \State \Return{$false$}
+    \EndIf
+  \EndFunction
+\end{algorithmic}
+\end{algorithm}

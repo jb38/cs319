@@ -1,0 +1,33 @@
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[auto,node distance=2.5cm,main node/.style={circle,draw}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below right of=1] {2};
+  \node[main node] (3) [above right of=2] {3};
+  \node[main node] (4) [above right of=3] {4};
+  \node[main node] (5) [below right of=3] {5};
+  \node[main node] (6) [below right of=4] {6};
+  \node[main node] (7) [below right of=6] {7};
+  \node[main node] (8) [above right of=7] {8};
+  \node[main node] (9) [above right of=1] {9};
+  
+  \path[every node/.style={font=\small}]
+    (1) edge node [right] {2} (2)
+    (2) edge node [right] {2} (3)
+    (1) edge node [above] {2} (3)
+    (1) edge node [right] {7} (9)
+    (9) edge node [above] {2} (4)
+    (3) edge node [right] {1} (4)
+    (2) edge node [above] {3} (5)
+    (5) edge node [right] {3} (3)
+    (3) edge node [above] {4} (6)
+    (5) edge node [right] {4} (6)
+    (5) edge node [above] {5} (7)
+    (6) edge node [right] {5} (7)
+    (6) edge node [above] {6} (8)
+    (7) edge node [right] {1} (8);
+\end{tikzpicture}
+\end{center}
+\caption{Undirected Graph}
+\end{figure}

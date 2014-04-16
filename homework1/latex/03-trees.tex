@@ -1,0 +1,304 @@
+
+\adjustbox{valign=t}{
+\begin{minipage}[t]{.33\linewidth}
+  1. \textit{insert(10)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$};
+    \end{tikzpicture}
+  }
+\end{minipage}  
+}
+\adjustbox{valign=t}{
+\begin{minipage}[t]{.33\linewidth}
+2. \textit{insert(5)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+        }
+        child[missing]{};
+    \end{tikzpicture}
+  }
+\end{minipage}  
+}
+\adjustbox{valign=t}{
+\begin{minipage}[t]{.33\linewidth}
+  3. \textit{insert(15)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }
+\end{minipage}
+} \\[2em]
+\adjustbox{valign=t}{
+\begin{minipage}[t]{.33\linewidth}  
+  4. \textit{insert(10)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }
+\end{minipage}  
+}
+\adjustbox{valign=t}{
+\begin{minipage}{.33\linewidth}
+  5. \textit{insert(9)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+          child[missing]{}
+          child {
+            node[circle,draw]{$9$}
+          }
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }
+\end{minipage}  
+}
+\adjustbox{valign=t}{
+\begin{minipage}{.33\linewidth}
+  6. \textit{insert(7)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+          child[missing]{}
+          child {
+            node[circle,draw]{$9$}
+            child {
+              node[circle,draw]{$7$}
+            }
+            child[missing]{}
+          }
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }\end{minipage}  
+} \\[2em]
+\adjustbox{valign=t}{
+\begin{minipage}{.33\linewidth}
+  7. \textit{insert(2)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+          child {
+            node[circle,draw]{$2$}
+          }
+          child {
+            node[circle,draw]{$9$}
+            child {
+              node[circle,draw]{$7$}
+            }
+            child[missing]{}
+          }
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }
+\end{minipage}  
+}
+\adjustbox{valign=t}{
+\begin{minipage}{.33\linewidth}
+  8. \textit{insert(1)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+          child {
+            node[circle,draw]{$2$}
+            child {
+              node[circle,draw]{$1$}
+            }
+            child[missing] { }
+          }
+          child {
+            node[circle,draw]{$9$}
+            child {
+              node[circle,draw]{$7$}
+            }
+            child[missing]{}
+          }
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }
+\end{minipage}  
+}
+\adjustbox{valign=t}{
+\begin{minipage}{.33\linewidth}
+  9. \textit{insert(4)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+          child {
+            node[circle,draw]{$2$}
+            child {
+              node[circle,draw]{$1$}
+            }
+            child {
+              node[circle,draw]{$4$}
+            }
+          }
+          child[missing]
+          child {
+            node[circle,draw]{$9$}
+            child {
+              node[circle,draw]{$7$}
+            }
+            child[missing]{}
+          }
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }
+\end{minipage}  
+} \\[2em]
+\adjustbox{valign=t}{
+\begin{minipage}{.33\linewidth}
+  10. \textit{insert(3)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+          child {
+            node[circle,draw]{$2$}
+            child {
+              node[circle,draw]{$1$}
+            }
+            child {
+              node[circle,draw]{$4$}
+              child {
+                node[circle,draw]{$3$}
+              }
+              child[missing] { }
+            }
+          }
+          child[missing]
+          child {
+            node[circle,draw]{$9$}
+            child {
+              node[circle,draw]{$7$}
+            }
+            child[missing]{}
+          }
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }
+\end{minipage}  
+}
+\adjustbox{valign=t}{
+\begin{minipage}{.33\linewidth}
+  11. \textit{insert(8)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$5$}
+          child {
+            node[circle,draw]{$2$}
+            child {
+              node[circle,draw]{$1$}
+            }
+            child {
+              node[circle,draw]{$4$}
+              child {
+                node[circle,draw]{$3$}
+              }
+              child[missing]{ }
+            }
+          }
+          child[missing]
+          child {
+            node[circle,draw]{$9$}
+            child {
+              node[circle,draw]{$7$}
+              child[missing]{ }
+              child {
+                node[circle,draw]{$8$}
+              }
+            }
+            child[missing]{}
+          }
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }
+\end{minipage}  
+}
+\adjustbox{valign=t}{
+\begin{minipage}{.33\linewidth}
+  12. \textit{delete(5)} \\[1em]
+  \adjustbox{valign=t}{
+    \begin{tikzpicture}[->,>=latex]
+      \node[circle,draw](z){$10$}
+        child{
+          node[circle,draw]{$4$}
+          child {
+            node[circle,draw]{$2$}
+            child {
+              node[circle,draw]{$1$}
+            }
+            child {
+              node[circle,draw]{$3$}
+            }
+          }
+          child[missing]
+          child {
+            node[circle,draw]{$9$}
+            child {
+              node[circle,draw]{$7$}
+              child[missing]{ }
+              child {
+                node[circle,draw]{$8$}
+              }
+            }
+            child[missing]{}
+          }
+        }
+        child{
+          node[circle,draw]{$15$}
+        };
+    \end{tikzpicture}
+  }
+\end{minipage}  
+}

@@ -1,0 +1,105 @@
+\documentclass[6pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{mathtools} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{caption}
+
+\pagestyle{fancy}
+\lhead{Blaney}
+\chead{\textit{Algorithm Analysis - Spring 2014}}
+\rhead{Homework 2}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={asdf,jkl},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                   % the language of the code
+  morekeywords={var,function,window,document,console,undefined,Number,String,Boolean,Object,Array,Function,arguments,let,var},            % if you want to add more keywords to the set
+  numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+}
+
+\title{CS319}
+\author{Jim Blaney}
+\date{February 27, 2014}
+
+\begin{document}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{5pt}
+
+\noindent I pledge that I have neither given nor received any unauthorized aid on this assignment. \\[4em]
+%\-\hspace{0.55\linewidth} \includegraphics[height=4em]{signature-latex}
+
+\section*{Problem 1 [COMPLETE]}
+
+\input{01-explanation}
+
+\input{01-tables}
+
+\input{01-graphs}
+
+\section*{Problem 2 [COMPLETE]}
+
+\input{02-greedy-0-1}
+
+\input{02-greedy-fractional}
+
+\section*{Problem 3 [COMPLETE]}
+
+\input{03-graph}
+
+\input{03-min-span-tree}
+
+\input{03-greedy-single-shortest-path}
+
+\section*{Problem 4 [COMPLETE]}
+
+\input{04-algorithm}
+
+\section*{Problem 5 [COMPLETE]}
+
+\input{05-negatives}
+
+\end{document}

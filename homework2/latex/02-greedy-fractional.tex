@@ -1,0 +1,52 @@
+\pagebreak
+\subsection*{Greedy Fractional Knapsack}
+\subsubsection*{Process}
+
+In this case, the greedy function is maximized for value ($weight \div price$), packing the knapsack with items in descending order of value, until no more items can be added without exceeding the maximum capacity of the knapsack. At this point, the fraction of the next item is calculated and added to the knapsack, thereby reaching the maximum capacity while ensuring the maximum possible value.
+
+\begin{algorithm}[H]
+\caption{Greedily pack a knapsack with items based on value, including a fractional quantity}
+\textbf{Inputs:} A given capacity (weight limit) $W$, and $S$, a set of items, each having a $weight$, $price$, and $quantity$ (default/maximum 1.0). \\
+\textbf{Outputs:} $L$, a subset of $S$, consisting of the items to be packed. $w$, the packed weight. $p$ the packed value. \\
+\textbf{Complexity:} $O(n)$. Each item is computed against one time. \\[-0.8em]
+\hline
+\begin{algorithmic}[1]
+  \State \Call{SortDescending}{$S$, $price$} \Comment{Sort the items by price, descending}
+  \State $w \leftarrow 0$ \Comment{Weight accumulator}
+  \State $p \leftarrow 0$ \Comment{Price accumulator}
+  \State $L \leftarrow \{\}$
+  \ForAll{$s$ \textbf{in} $S$} 
+    \If {$w + s.weight \leq W$} \Comment{Item can fit}
+      \State $w \leftarrow w + s.weight$ \Comment{Accumulate the weight}
+      \State $p \leftarrow p + s.price$ \Comment{Accumulate the price}
+      \State $L \leftarrow L\cup\{s\}$ \Comment{Merge the item into the output set}
+    \Else
+      \State $s.quantity \leftarrow \frac{W - w}{s.weight}$ \Comment{Adjust the quantity}
+      \State $w \leftarrow w + (s.weight * s.quantity)$ \Comment{Accumulate the modified weight}
+      \State $p \leftarrow p + s.price * s.quantity)$ \Comment{Accumulate the modified price}
+      \State $L \leftarrow L\cup\{s\}$ \Comment{Merge the item into the output set}
+    \EndIf
+  \EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection*{Solution}
+
+Given weights of $\left\{ 20, 24, 14, 20, 18, 20, 10, 6 \right\}$, prices of $\left\{ 15, 9, 27, 12, 36, 12, 9, 12 \right\}$, and a maximum capacity of $80$, the optimal fractional solution is:
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rrrr||rr}
+\multicolumn{4}{c||}{Item} & \multicolumn{2}{c}{Total} \\
+\multicolumn{1}{c}{Weight} & \multicolumn{1}{c}{Price} & \multicolumn{1}{c}{Value} & \multicolumn{1}{c||}{Quantity} & \multicolumn{1}{c}{Weight} & \multicolumn{1}{c}{Price} \\
+\hline
+18 & 36 & 2.00 & 1.0 & 18 &  36 \\
+ 6 & 12 & 2.00 & 1.0 & 24 &  48 \\
+14 & 27 & 1.93 & 1.0 & 32 &  63 \\
+10 &  9 & 0.90 & 1.0 & 52 &  78 \\
+20 & 15 & 0.75 & 1.0 & 72 &  90 \\
+20 & 12 & 0.60 & 0.6 & \textbf{80} & \textbf{106.2} \\
+\end{tabular}
+\end{center}
+\caption{Greedy Fractional Knapsack Solution}
+\end{table}

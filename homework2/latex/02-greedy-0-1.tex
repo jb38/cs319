@@ -1,0 +1,45 @@
+\subsection*{Greedy 0-1 Knapsack}
+\subsubsection*{Process}
+
+In this case, the greedy function is maximized for price, packing the knapsack with items in descending order of price, until no more items can be added without exceeding the maximum capacity of the knapsack.
+
+\begin{algorithm}[H]
+\caption{Greedily pack a knapsack with items based on price}
+\textbf{Inputs:} A given capacity (weight limit) $W$, and $S$, a set of items, each having a $weight$ and $price$. \\
+\textbf{Outputs:} $L$, a subset of $S$, consisting of the items to be packed. $w$, the packed weight. $p$ the packed value. \\
+\textbf{Complexity:} $O(n)$. Each item is computed against one time. \\[-0.8em]
+\hline
+\begin{algorithmic}[1]
+  \State \Call{SortDescending}{$S$, $price$} \Comment{Sort the items by price, descending}
+  \State $w \leftarrow 0$ \Comment{Weight accumulator}
+  \State $p \leftarrow 0$ \Comment{Price accumulator}
+  \State $L \leftarrow \{\}$
+  \ForAll{$s$ \textbf{in} $S$} 
+    \If {$w + s.weight \leq W$} \Comment{Item can fit}
+      \State $w \leftarrow w + s.weight$ \Comment{Accumulate the weight}
+      \State $p \leftarrow p + s.price$ \Comment{Accumulate the price}
+      \State $L \leftarrow L\cup\{s\}$ \Comment{Merge the item into the output set}
+    \EndIf
+  \EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection*{Solution}
+
+Given weights of $\left\{ 20, 24, 14, 20, 18, 20, 10, 6 \right\}$, prices of $\left\{ 15, 9, 27, 12, 36, 12, 9, 12 \right\}$, and a maximum capacity of $80$, the optimal 0-1 solution is:
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{rr||rr}
+\multicolumn{2}{c||}{Item} & \multicolumn{2}{c}{Total} \\
+\multicolumn{1}{c}{Weight} & \multicolumn{1}{c||}{Price} & \multicolumn{1}{c}{Weight} & \multicolumn{1}{c}{Price} \\
+\hline
+18 & 36 & 18 &  36 \\
+14 & 27 & 32 &  63 \\
+20 & 15 & 52 &  78 \\
+20 & 12 & 72 &  90 \\
+ 6 & 12 & \textbf{78} & \textbf{102} \\
+\end{tabular}
+\end{center}
+\caption{Greedy 0-1 Knapsack Solution}
+\end{table}

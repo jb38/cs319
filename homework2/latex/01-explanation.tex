@@ -1,0 +1,3 @@
+Observations of the execution times in all cases among the selected strategies indicates that the worst cases for executing the Quicksort algorithm ($O(n^2)$) are on sorted sets of data, when the selected pivot is at the extent (min or max value) of the set. \\
+
+From experimentation, the most effective pivot selection strategies were the midpoint and the median of the start, end, and midpoint values of the data structure. The variance between results on unsorted and sorted sets of data was minimal. This is due to the fact that, in both sorted and unsorted sets, these strategies are more likely to coincide with the better-case selection ($O(n \log{n})$) than the worst-case values (a min or max value of an ordered set).

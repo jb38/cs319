@@ -1,0 +1,147 @@
+\begin{minipage}{.5\linewidth}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \begin{loglogaxis}[ymode=log,
+               xlabel={Number of Elements},
+               ylabel={Time (seconds)},
+               ymin=0.000005,
+               ymax=30,
+               width=.95\linewidth]
+    \addplot[smooth, line width=1.2pt, domain=10:10000] {0.000001 * x * log10(x)} node[pos=0.75,pin={-85:$n \log{n}$},inner sep=0pt]{};
+    \addplot[smooth, line width=1.2pt, domain=10:10000] {0.0000001 * x^2} node[pos=0.75,pin={140:$n^2$},inner sep=0pt]{};
+  \end{loglogaxis}
+\end{tikzpicture}\end{center}
+\caption{Normalized Efficiency Approximations}
+\end{figure}
+\end{minipage}
+\begin{minipage}{.5\linewidth}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \begin{loglogaxis}[
+               xlabel={Number of Elements},
+               ylabel={Time (seconds)},
+               ymin=0.000005,
+               ymax=30,
+               width=.95\linewidth]
+    \addplot[smooth, color=red] file[]{01-graph-data/01-results-first-unsorted.data} node[pos=0.75,pin={-85:Unsorted},inner sep=0pt]{};
+    \addplot[smooth, color=blue] file[]{01-graph-data/01-results-first-sorted.data} node[pos=0.75,pin={140:Sorted},inner sep=0pt]{};
+  \end{loglogaxis}
+\end{tikzpicture}
+\end{center}
+\caption{Left-most Pivot Selection}
+\end{figure}
+\end{minipage} \\[2em]
+
+\begin{minipage}{.5\linewidth}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \begin{loglogaxis}[
+               xlabel={Number of Elements},
+               ylabel={Time (seconds)},
+               ymin=0.000005,
+               ymax=30,
+               width=.95\linewidth]
+    \addplot[smooth, color=red] file[]{01-graph-data/01-results-last-unsorted.data} node[pos=0.75,pin={-85:Unsorted},inner sep=0pt]{};
+    \addplot[smooth, color=blue] file[]{01-graph-data/01-results-last-sorted.data} node[pos=0.75,pin={140:Sorted},inner sep=0pt]{};
+  \end{loglogaxis}
+\end{tikzpicture}
+\end{center}
+\caption{Right-most Pivot Selection}
+\end{figure}
+\end{minipage}
+\begin{minipage}{.5\linewidth}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \begin{loglogaxis}[
+               xlabel={Number of Elements},
+               ylabel={Time (seconds)},
+               ymin=0.000005,
+               ymax=30,
+               width=.95\linewidth]
+    \addplot[smooth, color=red] file[]{01-graph-data/01-results-mid-unsorted.data} node[pos=0.75,pin={140:Unsorted},inner sep=0pt]{};
+    \addplot[smooth, color=blue] file[]{01-graph-data/01-results-mid-sorted.data} node[pos=0.75,pin={-85:Sorted},inner sep=0pt]{};
+  \end{loglogaxis}
+\end{tikzpicture}\end{center}
+\caption{Midpoint Pivot Selection}
+\end{figure}
+\end{minipage}
+
+\begin{minipage}{.5\linewidth}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \begin{loglogaxis}[
+               xlabel={Number of Elements},
+               ylabel={Time (seconds)},
+               ymin=0.000005,
+               ymax=30,
+               width=.95\linewidth]
+    \addplot[smooth, color=red] file[]{01-graph-data/01-results-random-unsorted.data} node[pos=0.75,pin={140:Unsorted},inner sep=0pt]{};
+    \addplot[smooth, color=blue] file[]{01-graph-data/01-results-random-sorted.data} node[pos=0.75,pin={-85:Sorted},inner sep=0pt]{};
+  \end{loglogaxis}
+\end{tikzpicture}\end{center}
+\caption{Random Pivot Selection}
+\end{figure}
+\end{minipage}
+\begin{minipage}{.5\linewidth}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \begin{loglogaxis}[
+               xlabel={Number of Elements},
+               ylabel={Time (seconds)},
+               ymin=0.000005,
+               ymax=30,
+               width=.95\linewidth]
+    \addplot[smooth, color=red] file[]{01-graph-data/01-results-med-unsorted.data} node[pos=0.75,pin={140:Unsorted},inner sep=0pt]{};
+    \addplot[smooth, color=blue] file[]{01-graph-data/01-results-med-sorted.data} node[pos=0.75,pin={-85:Sorted},inner sep=0pt]{};
+  \end{loglogaxis}
+\end{tikzpicture}\end{center}
+\caption{Median Pivot Selection}
+\end{figure}
+\end{minipage}
+
+\begin{minipage}{.5\linewidth}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \begin{loglogaxis}[ymode=log,
+               xlabel={Number of Elements},
+               ylabel={Time (seconds)},
+               ymin=0.000005,
+               ymax=30,
+               width=.95\linewidth]
+    \addplot[smooth, color=red] file[]{01-graph-data/01-results-first-unsorted.data} node[pos=0.42,pin={-85:First},inner sep=0pt]{};
+    \addplot[smooth, color=blue] file[]{01-graph-data/01-results-last-unsorted.data} node[pos=0.58,pin={-85:Last},inner sep=0pt]{};
+    \addplot[smooth, color=green] file[]{01-graph-data/01-results-mid-unsorted.data} node[pos=0.25,pin={-85:Midpoint},inner sep=0pt]{};
+    \addplot[smooth, color=purple] file[]{01-graph-data/01-results-random-unsorted.data} node[pos=0.5,pin={140:Random},inner sep=0pt]{};
+    \addplot[smooth, color=orange] file[]{01-graph-data/01-results-med-unsorted.data} node[pos=0.75,pin={-85:Median},inner sep=0pt]{};
+  \end{loglogaxis}
+\end{tikzpicture}\end{center}
+\caption{All Pivot Selections on Unsorted Data}
+\end{figure}
+\end{minipage}
+\begin{minipage}{.5\linewidth}
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+  \begin{loglogaxis}[ymode=log,
+               xlabel={Number of Elements},
+               ylabel={Time (seconds)},
+               ymin=0.000005,
+               ymax=30,
+               width=.95\linewidth]
+    \addplot[smooth, color=red] file[]{01-graph-data/01-results-first-sorted.data} node[pos=0.33,pin={150:First},inner sep=0pt]{};
+    \addplot[smooth, color=blue] file[]{01-graph-data/01-results-last-sorted.data} node[pos=0.67,pin={150:Last},inner sep=0pt]{};
+    \addplot[smooth, color=green] file[]{01-graph-data/01-results-mid-sorted.data} node[pos=0.25,pin={-85:Midpoint},inner sep=0pt]{};
+    \addplot[smooth, color=purple] file[]{01-graph-data/01-results-random-sorted.data} node[pos=0.5,pin={-85:Random},inner sep=0pt]{};
+    \addplot[smooth, color=orange] file[]{01-graph-data/01-results-med-sorted.data} node[pos=0.75,pin={-85:Median},inner sep=0pt]{};
+  \end{loglogaxis}
+\end{tikzpicture}\end{center}
+\caption{All Pivot Selections on Sorted Data}
+\end{figure}
+\end{minipage}

@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{mathtools} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{url}
+\usepackage{hyperref}
+
+\pagestyle{fancy}
+\lhead{Blaney}
+\chead{\textit{Algorithm Analysis - Spring 2014}}
+\rhead{Homework 1}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={asdf,jkl},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                   % the language of the code
+  morekeywords={var,function,window,document,console,undefined,Number,String,Boolean,Object,Array,Function,arguments,let,var},            % if you want to add more keywords to the set
+  numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+}
+
+\title{CS319}
+\author{Jim Blaney}
+\date{January 2014}
+
+\begin{document}
+
+\noindent I pledge that I have neither given nor received any unauthorized aid on this assignment. \\[4em]
+%\-\hspace{0.55\linewidth} \includegraphics[height=4em]{signature-latex}
+
+\section*{Problem 1 [PART COMPLETE-TIME]}
+
+\input{01-proofs}
+
+\section*{Problem 2 [COMPLETE]}
+
+\subsection*{Solutions}
+  \begin{multicols}{2}
+    \subsubsection*{Iterative Solution}
+      \lstinputlisting{02-iterative.py}
+    \subsubsection*{Recursive Solution}
+      \lstinputlisting{02-recursive.py}
+  \end{multicols}
+
+\subsection*{Results}
+
+\begin{minipage}{.57\linewidth}
+  \input{02-graph}
+\end{minipage}
+\begin{minipage}{.43\linewidth}
+  \input{02-table}
+\end{minipage}
+
+\subsection*{Findings}
+
+The iterative function has to iterate over the range of the exponent a single time ($n$), while the number of iterations of the recursive function is calculated by the function $a_1 = 1, a_n = 1 + a_{n - 1}$. The iterative function has a growth function of $O(N)$, and the recursive function also has a growth of $O(N)$. The iterative function operates more efficiently than the recursive function because, in the recursive function, the application runtime has to push arguments and addresses to the call stack and invoke itself $n - 1$ times in order to calculate the value. In the iterative solution, this happens $1$ time.
+
+\section*{Problem 3 [COMPLETE]}
+
+\input{03-trees}
+
+\section*{Problem 4 [COMPLETE]}
+
+\begin{enumerate}
+  \item[(a)] \input{04a-heaps}
+  \item[(b)] \input{04b-heaps}
+\end{enumerate}
+
+\section*{Problem 5 [COMPLETE]}
+
+\input{05-algorithms}
+
+\section*{Problem 6 [COMPLETE]}
+
+The worst time complexity to compute the sum of a $n \times n$ 2-dimensional array is $O(N^2)$, because the application would have to iterate over each dimension in order to access every element of the array.
+
+\section*{Problem 7 [COMPLETE]}
+
+\begin{enumerate}
+  \item[i.] The function computes the $n$-th number in the Fibonacci sequence.
+  \item[ii.] $F_n = F_{n - 2} + F_{n - 1}$, $n \ge 3$, $F_1 = F_2 = 1$
+  \item[iii.] $12$ additions are performed to compute $unknown(6)$.
+\end{enumerate}
+
+\pagebreak
+\section*{Problem 8 [COMPLETE]}
+
+%Given $\displaystyle\sum\limits_{i = 1}^{k} i^3 = \left(\displaystyle\sum\limits_{i = 1}^{k} i\right)^2$. \\
+Yes, this is a valid equality (Nicomachus's theorem), and has been proven by induction (\url{http://www.proofwiki.org/wiki/Sum_of_Sequence_of_Cubes}). Consider the following table: \\
+
+\begin{center}
+\begin{tabularx}{1.5in}{c||c|c}
+i & $\displaystyle\sum\limits_{i = 1}^{k} i^3$ & $\left(\displaystyle\sum\limits_{i = 1}^{k} i\right)^2$ \\[1.5em]
+\hline
+1 &   1 &   1 \\
+2 &   9 &   9 \\
+3 &  25 &  25 \\
+4 & 100 & 100 \\
+5 & 225 & 225 
+\end{tabularx}
+\end{center}
+
+\end{document}
