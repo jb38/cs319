@@ -1,0 +1,18 @@
+Python:
+\begin{lstlisting}[language=Python]
+class Graph:
+    def __init__(self, num_vertices = 0):
+        self.p = [[0 for x in range(num_vertices)] for x in range(num_vertices)];
+
+    def get_adjacent(self, i):
+        return [x for x in xrange(self.num_nodes()) if self.p[i][x] != 0];
+
+    def is_edge(self, i, j):
+        return self.p[i][j] != 0;
+
+    def num_nodes(self):
+        return len(self.p[0]);
+        
+    def set_edge(self, i, j, value):
+        self.p[i][j] = value;
+\end{lstlisting}

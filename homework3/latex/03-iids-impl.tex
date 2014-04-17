@@ -1,0 +1,33 @@
+Python:
+\begin{lstlisting}[language=Python]
+def improved_DFS(graph, vertex = 0, visited = None, depth = -1):
+
+    if visited is None:
+        visited = [False for x in range(graph.num_nodes())];
+
+    if not visited[vertex]:
+        visited[vertex] = True;
+        sys.stdout.write(str(vertex) + " ");
+
+    memory = [];
+
+    for adjacent in graph.get_adjacent(vertex):
+        if adjacent is vertex:
+            continue;
+        if depth != 0:
+            memory.extend(improved_DFS(graph, adjacent, visited, depth - 1));
+        elif not visited[adjacent]:
+            memory.append(adjacent);
+
+    return memory;
+
+def improved_IDS(graph, vertex = 0):
+
+    visited = [False for x in range(graph.num_nodes())];
+    memory = [vertex];
+
+    if not all(visited):
+        while len(memory) > 0:
+            memory.extend(improved_DFS(graph, remembered_vertices.pop(0), visited, 0));
+            memory = unique(memory);
+\end{lstlisting}

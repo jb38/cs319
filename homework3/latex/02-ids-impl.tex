@@ -1,0 +1,26 @@
+Python:
+\begin{lstlisting}[language=Python]
+def DFS(graph, vertex = 0, visited = None, depth = -1):
+
+    if visited is None:
+        visited = [False for x in xrange(graph.num_nodes())];
+
+    if not visited[vertex]:
+        visited[vertex] = True;
+        sys.stdout.write(str(vertex) + " ");
+
+    for adjacent in graph.get_adjacent(vertex):
+        if adjacent is vertex:
+            continue;
+        if depth != 0:
+            DFS(graph, adjacent, visited, depth - 1);
+
+def IDS(graph):
+
+    visited = [False for x in xrange(graph.num_nodes())];
+
+    for depth in xrange(graph.num_nodes()):
+        if all(visited):
+            break;
+        DFS(graph, 0, visited, depth);
+\end{lstlisting}
