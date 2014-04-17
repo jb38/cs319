@@ -134,7 +134,7 @@ if __name__ == '__main__':
     input_file = 'input.txt';
 
     if len(sys.argv) == 1:
-        print "Usage: %s [-dfs] [-bfs] [-ids] [-iids] [-v] [-v] input_file" % (sys.argv[0]);
+        print "Usage: %s {[-dfs] [-bfs] [-ids] [-iids] | [--all]} input_file" % (sys.argv[0]);
         sys.exit(0);
 
     for i in xrange(1, len(sys.argv)):
@@ -152,11 +152,6 @@ if __name__ == '__main__':
             do_bfs = True;
             do_ids = True;
             do_iids = True;
-        elif arg == "-v":
-            if VERBOSE:
-                VVERBOSE = True;
-            else:
-                VERBOSE = True;
         else:
             input_file = arg;
 
