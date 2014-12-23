@@ -9,6 +9,7 @@
 #          of contiguous numbers in A that provide the maximum sum. The
 #          set T must contain at least one number.
 
+import os;
 
 # find the positive difference between the values of a list
 # the returned list will be one element shorter than the input
@@ -46,7 +47,7 @@ def resolve_splits(seq, splits):
 
   for split in splits:
     mn = split[0];
-    mx = split[1] + 3;
+    mx = split[1] + 4;
     sequences.append(seq[mn:mx]);
 
   return sequences;
@@ -75,14 +76,23 @@ def seq_sums(s):
 
   return sums;
 
+def kadane_max_subarray_sum(A):
+  max_ending_here = max_so_far = A[0];
+  for x in A[1:]:
+    max_ending_here = max(x, max_ending_here + x);
+    max_so_far = max(max_so_far, max_ending_here);
+  return max_so_far;
 
+def random_sequence(lower, upper, length):
+  seq = [];
+  range = upper - lower;
+  for i in xrange(length):
+    seq.append(int(os.urandom(4).encode('hex'), 16) % range + lower);
+  return seq;
 
+def run_test(lower, upper, length):
 
-
-
-if __name__ == '__main__':
-
-  seq = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+  seq = random_sequence(lower, upper, length);
   # seq = [-10,-2,8,-5,7,10,2,5,9,-8,3,-1,0,-6,1,6,4];
   # seq = [
   #         4,  10,   5,   8,  -4,  -3,   3,   2, -10,  -9,
@@ -104,13 +114,33 @@ if __name__ == '__main__':
 
   max_index = max(enumerate(sums), key = lambda x: x[1])[0]; # 7. compare sums
 
-  print seq;
+  # print seq;
+  #
+  # for i in xrange(len(seqs)):        # 8. report findings
+  #   if i is max_index:
+  #     print "*",
+  #   else:
+  #     print " ",
+  #   print str(seqs[i]) + " -> " + str(sums[i]);
 
-  for i in xrange(len(seqs)):        # 8. report findings
-    if i is max_index:
-      print "*",
-    else:
-      print " ",
-    print str(seqs[i]) + " -> " + str(sums[i]);
+  # 9. check against the known best solution
+  max_sum = kadane_max_subarray_sum(seq);
 
-  # print str(seqs[max_index]);# + " -> " + str(sums[max_index]);
+  if sums[max_index] is max_sum:
+    # print "Kadane's algorithm confirms";
+    return True;
+  else:
+    # print "Kadane's algorithm differs (%i)" % (max_sum);
+    return False;
+
+
+if __name__ == '__main__':
+
+  results = [];
+
+  for i in range(100):
+    results.append(run_test(-50, 50, 1000));
+
+  hits = sum(results);
+
+  print hits;
